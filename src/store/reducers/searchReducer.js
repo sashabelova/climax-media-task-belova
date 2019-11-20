@@ -3,7 +3,11 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   repos: [],
   loading: false,
-  error: false
+  error: false,
+  first: null,
+  prev: null,
+  next: null,
+  last: null
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -12,6 +16,14 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      };
+    case actionTypes.GET_PAGINATION_LINKS:
+      return {
+        ...state,
+        first: action.links['rel="first"'],
+        prev: action.links['rel="prev"'],
+        next: action.links['rel="next"'],
+        last: action.links['rel="last"']
       };
     case actionTypes.GET_REPOSITORIES:
       const reposInited = action.repos;

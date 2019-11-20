@@ -26,4 +26,28 @@ body {
   padding: 20px;
 }
 
+button {
+  background-color: $c_darkblue;
+  color: $c_white;
+  text-transform: uppercase;
+  @include f_600;
+  @include font-size(16);
+  height: 40px;
+  padding: 0.5em 1em;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin: 10px auto;
+  border: solid 1px $c_darkblue;
+  &:hover {
+    color: $c_darkblue;
+    background-color: transparent;
+  }
+  &:disabled,
+  &[disabled] {
+    border: solid 1px $c_bg_nonactive_border;
+    background-color: $c_bg_nonactive_border;
+    color: $c_white;
+  }
+}
+
 @import 'search';

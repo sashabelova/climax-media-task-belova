@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import Repository from '../../components/Repository/Repository';
+import Pagination from '../Pagination/Pagination';
 
 class Search extends Component {
   state = {
@@ -47,7 +48,7 @@ class Search extends Component {
               onChange={event => this.onInputChange(event.target.value)}
             />
             {this.state.validationMessage ? <span>Search value cannot be empty</span> : ''}
-            <button>Search for repos</button>
+            <button type="button">Search for repos</button>
           </form>
         </section>
         {this.state.activeSearch ? (
@@ -64,6 +65,7 @@ class Search extends Component {
                     updated={repo.updated_at}
                   />
                 ))}
+                <Pagination />
               </div>
             ) : this.props.loading ? (
               <div>Loading . . .</div>

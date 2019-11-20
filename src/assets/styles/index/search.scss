@@ -32,23 +32,6 @@
     @include font-size(13);
     color: $c_red;
   }
-  button {
-    background-color: $c_darkblue;
-    color: $c_white;
-    text-transform: uppercase;
-    @include f_600;
-    @include font-size(16);
-    height: 40px;
-    padding: 0.5em 1em;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    margin: 10px auto;
-    border: solid 1px $c_darkblue;
-    &:hover {
-      color: $c_darkblue;
-      background-color: transparent;
-    }
-  }
 }
 
 .repositories-section {
@@ -126,5 +109,17 @@
         }
       }
     }
+  }
+}
+
+.pagination {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 500px;
+  width: 100%;
+  @include bp(mobile) {
+    flex-direction: column;
   }
 }
