@@ -22,6 +22,7 @@ class Search extends Component {
       return false;
     }
     this.setState({ validationMessage: false, activeSearch: true });
+    this.textInput.focus();
     this.props.onGetRepos(this.state.value);
   };
 
@@ -39,6 +40,10 @@ class Search extends Component {
               id="repo-search"
               type="text"
               placeholder="Search"
+              name="search"
+              ref={inp => {
+                this.textInput = inp;
+              }}
               onChange={event => this.onInputChange(event.target.value)}
             />
             {this.state.validationMessage ? <span>Search value cannot be empty</span> : ''}

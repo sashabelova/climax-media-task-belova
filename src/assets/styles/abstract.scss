@@ -43,3 +43,29 @@
     @content;
   }
 }
+
+// ----- Media queries
+$desktop: 1440px;
+$laptop: 1140px;
+$tablet: 768px;
+$mobile: 320px;
+
+@mixin bp($size) {
+  @if $size==desktop {
+    @media screen and (min-width: $desktop) {
+      @content;
+    }
+  } @else if $size==laptop {
+    @media screen and (max-width: $laptop) {
+      @content;
+    }
+  } @else if $size==tablet {
+    @media screen and (max-width: $tablet) {
+      @content;
+    }
+  } @else if $size==mobile {
+    @media screen and (max-width: $mobile) {
+      @content;
+    }
+  }
+}

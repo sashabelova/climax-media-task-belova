@@ -69,6 +69,9 @@
       display: flex;
       justify-content: space-between;
       margin-top: 0.5rem;
+      @include bp(tablet) {
+        @include font-size(14);
+      }
     }
     &-head {
       display: flex;
@@ -76,6 +79,12 @@
       span {
         @include font-size(14);
         font-style: italic;
+      }
+      @include bp(tablet) {
+        flex-direction: column;
+        span {
+          margin-top: 5px;
+        }
       }
     }
     &-lang {
