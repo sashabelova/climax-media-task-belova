@@ -1,0 +1,45 @@
+@import 'fonts.scss';
+@import 'colors.scss';
+
+// Font size
+@function calculate-rem($size) {
+  $rem-size: $size / 16;
+  @return $rem-size * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: calculate-rem($size);
+}
+
+@mixin ph($font-name, $font-size, $font-color) {
+  &::-webkit-input-placeholder {
+    font-family: $font-name, sans-serif;
+    font-size: $font-size;
+    color: $font-color;
+    @content;
+  }
+  &::-moz-placeholder {
+    font-family: $font-name, sans-serif;
+    font-size: $font-size;
+    color: $font-color;
+    @content;
+  }
+  &:-moz-placeholder {
+    font-family: $font-name, sans-serif;
+    font-size: $font-size;
+    color: $font-color;
+    @content;
+  }
+  &::placeholder {
+    font-family: $font-name, sans-serif;
+    font-size: $font-size;
+    color: $font-color;
+    @content;
+  }
+  &:placeholder {
+    font-family: $font-name, sans-serif;
+    font-size: $font-size;
+    color: $font-color;
+    @content;
+  }
+}

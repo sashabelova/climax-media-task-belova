@@ -1,0 +1,121 @@
+.search-section {
+  margin-top: 2rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  input {
+    height: 40px;
+    width: 250px;
+    object-fit: contain;
+    box-shadow: none !important;
+    border: solid 1px $c_gray_border;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: transparent;
+    padding-left: 15px;
+    @include font-size(16);
+    color: $c_darkblue;
+    margin: 10px auto;
+    font-family: 'Montserrat', sans-serif;
+    @include ph('Montserrat', 15px, $c_lightgray);
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      box-shadow: none !important;
+      border: solid 1px $c_darkblue;
+    }
+  }
+  span {
+    @include font-size(13);
+    color: $c_red;
+  }
+  button {
+    background-color: $c_darkblue;
+    color: $c_white;
+    text-transform: uppercase;
+    @include f_600;
+    @include font-size(16);
+    height: 40px;
+    padding: 0.5em 1em;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 10px auto;
+    border: solid 1px $c_darkblue;
+    &:hover {
+      color: $c_darkblue;
+      background-color: transparent;
+    }
+  }
+}
+
+.repositories-section {
+  margin-top: 2rem;
+  .repository {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: left;
+    h4 a {
+      @include f_500;
+      color: $c_darkblue;
+      &:hover {
+        @include f_600;
+      }
+    }
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+    }
+    &-head {
+      display: flex;
+      justify-content: space-between;
+      span {
+        @include font-size(14);
+        font-style: italic;
+      }
+    }
+    &-lang {
+      span {
+        padding-left: 5px;
+        &:before {
+          content: '';
+          display: inline-block;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          margin-right: 5px;
+        }
+      }
+      .lang-python {
+        &:before {
+          background-color: $c_bg_lilac;
+        }
+      }
+      .lang-php {
+        &:before {
+          background-color: $c_bg_orange;
+        }
+      }
+      .lang-html {
+        &:before {
+          background-color: $c_bg_lighgreen;
+        }
+      }
+      .lang-ruby {
+        &:before {
+          background-color: $c_bg_pink;
+        }
+      }
+      .lang-other {
+        &:before {
+          background-color: $c_bg_lightred;
+        }
+      }
+    }
+  }
+}
