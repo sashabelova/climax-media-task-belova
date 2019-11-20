@@ -65,6 +65,8 @@ class Search extends Component {
                   />
                 ))}
               </div>
+            ) : this.props.loading ? (
+              <div>Loading . . .</div>
             ) : (
               <div>We couldn’t find anything that matches your search</div>
             )}
@@ -79,7 +81,8 @@ class Search extends Component {
 
 const mapStateToProps = state => {
   return {
-    repos: state.searchReducer.repos
+    repos: state.searchReducer.repos,
+    loading: state.searchReducer.loading
   };
 };
 

@@ -9,6 +9,12 @@ export const clearRepositories = () => {
   };
 };
 
+export const fetchStart = () => {
+  return {
+    type: actionTypes.FETCH_START
+  };
+};
+
 export const setRepositories = repos => {
   return {
     type: actionTypes.GET_REPOSITORIES,
@@ -26,6 +32,7 @@ export const getRepositories = user => {
   //TODO pagination
   return dispatch => {
     dispatch(clearRepositories());
+    dispatch(fetchStart());
     axios
       .get(`${url}/${user}/repos`)
       .then(response => {
