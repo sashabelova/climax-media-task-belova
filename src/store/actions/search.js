@@ -50,7 +50,6 @@ export const getRepositories = fullUrl => {
         let links_pages = {};
         response.headers.link.split(', ').forEach(el => {
           let parts = el.replace(/[<>]/g, '').split('; ');
-          console.log(parts);
           links_pages[parts[1]] = parts[0];
         });
         dispatch(getPaginationLinks(links_pages));
