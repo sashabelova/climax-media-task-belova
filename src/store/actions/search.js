@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
 const url = 'https://api.github.com/users';
+const PER_PAGE = 10;
 
 export const clearRepositories = () => {
   return {
@@ -35,16 +36,21 @@ export const getRepositoriesFailed = () => {
   };
 };
 
-export const getRepositories = user => {
+export const generateFirstSearchUrl = user => {
+  return `${url}/${user}/repos?per_page=${PER_PAGE}`;
+};
+
+export const getRepositories = fullUrl => {
   return dispatch => {
     dispatch(clearRepositories());
     dispatch(fetchStart());
     axios
-      .get(`${url}/${user}/repos?page=1&per_page=10`)
+      .get(fullUrl)
       .then(response => {
         let links_pages = {};
         response.headers.link.split(', ').forEach(el => {
-          let parts = el.split('; ');
+          let parts = el.replace(/[<>]/g, '').split('; ');
+          console.log(parts);
           links_pages[parts[1]] = parts[0];
         });
         dispatch(getPaginationLinks(links_pages));

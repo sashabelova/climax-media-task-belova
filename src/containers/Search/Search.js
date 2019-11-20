@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import Repository from '../../components/Repository/Repository';
 import Pagination from '../Pagination/Pagination';
+import { generateFirstSearchUrl } from '../../store/actions/search';
 
 class Search extends Component {
   state = {
@@ -24,7 +25,7 @@ class Search extends Component {
     }
     this.setState({ validationMessage: false, activeSearch: true });
     this.textInput.focus();
-    this.props.onGetRepos(this.state.value);
+    this.props.onGetRepos(generateFirstSearchUrl(this.state.value));
   };
 
   render() {
@@ -48,7 +49,7 @@ class Search extends Component {
               onChange={event => this.onInputChange(event.target.value)}
             />
             {this.state.validationMessage ? <span>Search value cannot be empty</span> : ''}
-            <button type="button">Search for repos</button>
+            <button type="submit">Search for repos</button>
           </form>
         </section>
         {this.state.activeSearch ? (
@@ -90,7 +91,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetRepos: user => dispatch(actions.getRepositories(user)),
+    onGetRepos: url => dispatch(actions.getRepositories(url)),
     onChange: () => dispatch(actions.clearRepositories())
   };
 };
